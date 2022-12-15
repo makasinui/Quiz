@@ -1,6 +1,7 @@
 import './App.scss';
-import { Header } from './Components/Header';
-import Layout from './Components/Layout';
+import { Header } from './Pages/Header';
+import Layout from './Pages/Layout';
+
 function App()  {
   return (
     <div className="App">
