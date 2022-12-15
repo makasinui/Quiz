@@ -1,0 +1,50 @@
+.input {
+    background: #fffefb;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+    position: relative;
+  
+    &::placeholder {
+      color: #b4b4b4;
+    }
+  }
+  
+  .field-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .label {
+    margin-top: 10px;
+    position: relative;
+    max-width: fit-content;
+    font-size: 14px;
+  }
+  
+  .required {
+    width: 5px;
+    height: 5px;
+    background: #ff8484;
+    border-radius: 4px;
+    position: absolute;
+    right: -4px;
+  }
+  
+  .textarea {
+    resize: none;
+    font-family: unset;
+  }
+  
+  .error {
+    font-weight: 400;
+    font-size: 10px;
+    color: #ff8484;
+  }
+  
+  .input-error {
+    border: 1px solid #ff8484;
+  }
+  
