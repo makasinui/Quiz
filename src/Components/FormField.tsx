@@ -1,14 +1,13 @@
 import '../styles/formfield.scss'
-
 interface AddItem {
     type?: string,
     placeholder: string,
-    required: boolean,
-    children: React.ReactNode
+    required?: boolean | false,
+    children: React.ReactNode,
+    handleSubmit: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export default function FormField({type, placeholder, required, children}: AddItem) {
-    
+export default function FormField({type, placeholder, required, children, handleSubmit}: AddItem) {
     return (
         <div className="field-wrapper">
             <label htmlFor="input" className="label">
@@ -22,6 +21,7 @@ export default function FormField({type, placeholder, required, children}: AddIt
                 type={type ?? 'text'}
                 placeholder={placeholder}
                 required={required}
+                onChange={(e) => handleSubmit(e)}
             />
       </div>
 

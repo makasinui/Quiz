@@ -1,5 +1,5 @@
 import Quiz from "../Models/Quiz";
-import * as React from 'react';
+import { Link } from "react-router-dom";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 export default function QuizItem(quiz: Quiz) {
-    const {id, name, description, link, amountOfQuestions, questions} = quiz;
+    const {id, name, description, link, questions} = quiz;
     return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -26,7 +26,11 @@ export default function QuizItem(quiz: Quiz) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Edit</Button>
+      <Link className="link" to={`/quiz/${id}`}>
+        <Button size="small">
+          Пройти тест
+        </Button>
+      </Link>
         <Button size="small">Delete</Button>
       </CardActions>
     </Card>

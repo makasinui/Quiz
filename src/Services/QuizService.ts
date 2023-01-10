@@ -1,32 +1,39 @@
 import Quiz from "../Models/Quiz"
 
 let data: Quiz[] = [
-    new Quiz(1, 'Сколько вам лет?', 'https://i.ytimg.com/vi/4zfY9L4245w/hqdefault.jpg', 1, [
+    new Quiz(1, 'Кто вы из наруто?', 'https://kartinki-srisovki.ru/wp-content/uploads/glavnaya-15.jpg', '', [
         {
             id: 1,
-            name: 'Введите ваш возраст',
-            type: 'input'
-        }
-    ]),
-    new Quiz(2, 'Какого вы пола?', 'https://soulexpert.ru/wp-content/uploads/2021/04/muzhchiny-i-zhenshhiny-takie-raznye-budto-s-raznyh-planet.png', 2, [
-        {
-            id: 1,
-            name: 'Мужской',
-            type: 'radio'
+            name: 'Что это?',
         },
         {
             id: 2,
-            name: 'Женский',
-            type: 'radio'
+            name: 'Как это?'
         }
-    ]),
-    new Quiz(3, 'Кто вы по профессии?', 'https://luckclub.ru/images/luckclub/2021/02/jns4sua1.jpg', 1, [
+    ], 
+    [
         {
             id: 1,
-            name: 'Введите вашу профессию',
-            type: 'input'
+            parentID: 1,
+            text: 'Как?'
+        }, 
+        {
+            id: 2,
+            parentID: 1,
+            text: 'Ауе'
+        },
+        {
+            id: 3,
+            parentID: 1,
+            text: 'ААА'
+        }, 
+        {
+            id: 4,
+            parentID: 2,
+            text: 'УУ'
         }
-    ])
+    ]
+    ),
 ];
 
 export default class QuizService {
@@ -45,10 +52,8 @@ export default class QuizService {
 
     createQuiz(quiz: Quiz): Promise<boolean> {
         return new Promise<boolean>((resolve, reject) => {
-            const lastId = Math.max(...data.map(e => e.id));
-            const newId = lastId + 1;
-            quiz.id = newId;
             data.push(quiz);
+            console.log(data)
             resolve(true);
         })
     }
@@ -64,6 +69,14 @@ export default class QuizService {
         return new Promise<boolean>((resolve, reject) => {
             data = [...data.filter(e => e.id !== id)];
             resolve(true)
+        })
+    }
+
+    getLastId(): Promise<number> {
+        return new Promise<number>((resolve) => {
+            const lastId = Math.max(...data.map(e => e.id));
+            const newId = lastId + 1;
+            resolve(newId);
         })
     }
 

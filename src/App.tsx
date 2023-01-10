@@ -1,5 +1,5 @@
 import './App.scss';
-import { Header } from './Pages/Header';
+import { Header } from './Components/Header';
 import Layout from './Pages/Layout';
 
 function App()  {
