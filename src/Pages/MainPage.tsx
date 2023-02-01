@@ -5,16 +5,16 @@ import Container from '@mui/material/Container';
 import { Grid } from '@mui/material';
 import AddItem from '../Components/AddItem';
 import Quizes from '../Components/Quizes';
-import Quiz from '../Models/Quiz';
+import { IQuiz } from '../Models/Quiz';
 import QuizService from '../Services/QuizService';
 
-export default function Layout () {
-    const [quizes, setQuizes] = useState<Quiz[]>();
-    const [quizList, setQuizList] = useState<Quiz[]>();
+export default function MainPage () {
+    const [quizes, setQuizes] = useState<IQuiz[]>();
+    const [quizList, setQuizList] = useState<IQuiz[]>();
     const quizService = new QuizService();
 
     const fetchQuizes = async () => {
-        setQuizes([...(await quizService.getList())]);
+        setQuizes(await quizService.getList());
     }
 
     useEffect(()=>{
@@ -25,7 +25,7 @@ export default function Layout () {
         <Fragment>
             <CssBaseline />
             <Container maxWidth="xl">
-                <Box sx={{ height: '100vh', padding: '20px 0' }}> 
+                <Box sx={{ height: '100vh', padding: '70px 0' }}> 
                     <Grid container spacing={2}>
                         <Grid item xs={4}>
                             <AddItem fetchList={fetchQuizes} />

@@ -1,16 +1,22 @@
 import IAnswer from "../Interfaces/IAnswer";
 import IQuizQuestion from "../Interfaces/IQuizQuestion";
 
-export default class Quiz {
-    id: number;
+export interface IQuiz {
+    id: number
+    name: string
+    link: string
+    description: string | undefined
+    questions: IQuizQuestion[] | undefined
+  }
+
+export class Quiz {
     name: string;
-    description?: string;
     link: string;
+    description?: string;
     questions?: IQuizQuestion[];
     answers?: IAnswer[];
 
-    constructor(id: number, name: string, link: string, description?: string, questions?: IQuizQuestion[], answers?: IAnswer[]) {
-        this.id = id;
+    constructor( name: string, link: string, description?: string, questions?: IQuizQuestion[], answers?: IAnswer[]) {
         this.name = name;
         this.link = link;
         this.questions = questions;
